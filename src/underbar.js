@@ -92,6 +92,18 @@
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var true_array = _.filter(collection,test);
+    var false_array = collection;
+
+    for (let i of true_array){
+      for (let j in false_array){
+        if (false_array[j] === i){
+          false_array.splice(j, 1);
+        }
+      }
+    }
+
+    return false_array;
   };
 
   // Produce a duplicate-free version of the array.
