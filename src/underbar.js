@@ -79,11 +79,12 @@
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
     var true_array = [];
-    for (let i = 0; i < collection.length; i++){
-      if (test(collection[i])){
-        true_array.push(collection[i]);
+    
+    _.each(collection, function(item){
+      if (test(item)){
+        true_array.push(item);
       }
-    }
+    });
     
     return true_array;
   };
