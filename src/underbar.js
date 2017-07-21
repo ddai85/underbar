@@ -100,6 +100,7 @@
       for (let j in false_array){
         if (false_array[j] === i){
           false_array.splice(j, 1);
+          break;
         }
       }
     }
