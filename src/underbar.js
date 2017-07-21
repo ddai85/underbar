@@ -93,7 +93,7 @@
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
     var true_array = _.filter(collection,test);
-    var false_array = collection;
+    var false_array = collection.slice();
 
     for (let i of true_array){
       for (let j in false_array){
