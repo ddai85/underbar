@@ -108,7 +108,21 @@
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var noDuplicate = array.slice();
+      for (let i in array){
+        let counter = 0;
+        for (let j in noDuplicate){
+          if (array[i] === noDuplicate[j]){
+            counter += 1;
+          }
+          if (counter > 1){
+            noDuplicate.splice(j, 1);
+          }
+        }
+      }
+    return noDuplicate;
   };
+
 
 
   // Return the results of applying an iterator to each element.
