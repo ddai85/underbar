@@ -50,7 +50,7 @@
   // Note: _.each does not have a return value, but rather simply runs the
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
-    if (Array.isArray(collection) === true){
+    if (Array.isArray(collection)){
       for (let i = 0; i < collection.length; i++){
         iterator(collection[i], i, collection);
       }
