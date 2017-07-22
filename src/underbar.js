@@ -183,7 +183,7 @@
   _.reduce = function(collection, iterator, accumulator) {
     
     var result;
-    var collectionClone = collection.slice();
+    var collectionClone = _.map(collection, _.identity);
 
     if (accumulator != undefined){
       result = accumulator;
