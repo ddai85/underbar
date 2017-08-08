@@ -396,18 +396,29 @@
   _.invoke = function(collection, functionOrKey, args) {
     
     var result = [];
-
-    if (args === undefined){
-      for (var i in collection){
-        result.push(functionOrKey.apply(collection[i]));
+    
+    if (typeof functionOrKey === 'function'){
+      if (args === undefined){
+        for (var i in collection){
+          result.push(functionOrKey.apply(collection[i]));
+        }
+      } else{
+        for (var i in collection){
+          result.push(functionOrKey.apply(collection[i]), args);
+        }
       }
-    } else{
-      for (var i in collection){
-        result.push(functionOrKey.apply(collection[i]), args);
-      }
+      return result;
     }
 
-    return result;
+    if (typeof functionOrKey === 'string'){
+      var stringConvert = String['prototype'][functionOrKey];
+
+      for (var i in collection){
+        var newString = stringConvert.apply(collection[i]);
+        result.push(newString);
+      }
+      return result;
+    }
   
   };
 
