@@ -494,6 +494,20 @@
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+    var resultArray = [];
+    for (var i in nestedArray){
+      if (Array.isArray(nestedArray[i])){
+        var insideArray = _.flatten(nestedArray[i]);
+        for (var j in insideArray){
+          resultArray.push(insideArray[j]);
+        }
+      } else{
+        resultArray.push(nestedArray[i]);
+      }
+    }
+    console.log(resultArray);
+    return resultArray;
+
   };
 
   // Takes an arbitrary number of arrays and produces an array that contains
