@@ -505,7 +505,6 @@
         resultArray.push(nestedArray[i]);
       }
     }
-    console.log(resultArray);
     return resultArray;
 
   };
@@ -552,5 +551,22 @@
   //
   // Note: This is difficult! It may take a while to implement.
   _.throttle = function(func, wait) {
-  };
+    //call func initially and record date/time
+    //if date/time variable is populated, check if it's past wait time
+    var timeCheck;
+    var currentTime;
+    
+    return function(){
+      if(timeCheck === undefined){
+        timeCheck = Date.now();
+        func();
+      } else{
+        currentTime = Date.now();
+        if (currentTime - timeCheck > wait){
+          timeCheck = Date.now();
+          func();
+        }
+      }
+    }
+  }
 }());
